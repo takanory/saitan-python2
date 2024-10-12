@@ -1,0 +1,2 @@
+message = "こんにちはPython!"
+    print(message)
