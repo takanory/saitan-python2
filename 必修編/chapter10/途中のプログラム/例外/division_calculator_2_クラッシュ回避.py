@@ -8,9 +8,5 @@ while True:
     second_number = input("2番目の数: ")
     if second_number == 'q':
         break
-    try:
-        answer = int(first_number) / int(second_number)
-    except ZeroDivisionError:
-        print("ゼロで割ることはできません！")
-    else:
-        print(answer)
+    answer = int(first_number) / int(second_number)
+    print(answer)

@@ -6,5 +6,5 @@ contents = path.read_text()
 
 lines = contents.splitlines()
 for line in lines:
-  print(line)
+    print(line)
 

@@ -6,9 +6,9 @@ path = Path('username.json')
 if path.exists():
     contents = path.read_text()
     username = json.loads(contents)
-    print(f"Welcome back, {username}!")
+    print(f"おかえりなさい、{username}さん！")
 else:
-    username = input("What is your name? ")
+    username = input("あなたのお名前は？ ")
     contents = json.dumps(username)
     path.write_text(contents)
-    print(f"We'll remember you when you come back, {username}!")
+    print(f"戻ってきたときにも名前を覚えていますよ、{username}さん！")
