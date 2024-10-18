@@ -2,7 +2,7 @@
 
 {% block content %}
 
-  <p>Topics</p>
+  <p>トピック一覧</p>
   <ul>
     {% for topic in topics %}
       <li>
@@ -10,10 +10,10 @@
           {{ topic.text }}</a>
       </li>
     {% empty %}
-      <li>No topics have been added yet.</li>
+      <li>トピックはまだ作成されていません。</li>
     {% endfor %}
   </ul>
 
-  <a href="{% url 'learning_logs:new_topic' %}">Add a new topic</a>
+  <a href="{% url 'learning_logs:new_topic' %}">新規トピックを追加</a>
 
 {% endblock content %}

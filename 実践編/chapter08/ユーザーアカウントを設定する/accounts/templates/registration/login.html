@@ -3,14 +3,14 @@
 {% block content %}
 
   {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
+    <p>ユーザー名とパスワードが一致しません。もう一度お試しください。</p>
   {% endif %}
 
   <form action="{% url 'accounts:login' %}" method='post'>
     {% csrf_token %}
     {{ form.as_div }}
 
-    <button name="submit">Log in</button>
+    <button name="submit">ログイン</button>
   </form>
 
 {% endblock content %}

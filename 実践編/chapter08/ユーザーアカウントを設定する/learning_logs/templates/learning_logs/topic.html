@@ -2,24 +2,24 @@
 
 {% block content %}
 
-  <p>Topic: {{ topic.text }}</p>
+  <p>トピック: {{ topic.text }}</p> 
 
-  <p>Entries:</p>
+  <p>記事:</p>
   <p>
-    <a href="{% url 'learning_logs:new_entry' topic.id %}">Add new entry</a>
+    <a href="{% url 'learning_logs:new_entry' topic.id %}">新しい記事を追加</a>
   </p>
 
-  <ul>
+  <ul> 
     {% for entry in entries %}
-      <li>
-        <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
-        <p>{{ entry.text|linebreaks }}</p>
-        <p>
-          <a href="{% url 'learning_logs:edit_entry' entry.id %}">
-            Edit entry</a></p>
-      </li>
-    {% empty %}
-      <li>There are no entries for this topic yet.</li>
+    <li>
+       <p>{{ entry.date_added|date:'Y年m月d日 H:i' }}</p>
+       <p>{{ entry.text|linebreaks }}</p>
+       <p>
+         <a href="{% url 'learning_logs:edit_entry' entry.id %}">
+         記事を編集</a></p>
+    </li>
+    {% empty %} 
+      <li>このトピックにはまだ記事がありません。</li>
     {% endfor %}
   </ul>
 
