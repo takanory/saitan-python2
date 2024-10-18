@@ -1,11 +1,11 @@
 <p>
-  <a href="{% url 'learning_logs:index' %}">Learning Log</a> -
-  <a href="{% url 'learning_logs:topics' %}">Topics</a> -
+  <a href="{% url 'learning_logs:index' %}">学習ノート</a> -
+  <a href="{% url 'learning_logs:topics' %}">トピック一覧</a>
   {% if user.is_authenticated %}
-    Hello, {{ user.username }}.
+    こんにちは {{ user.username }}さん
   {% else %}
-    <a href="{% url 'accounts:register' %}">Register</a> -
-    <a href="{% url 'accounts:login' %}">Log in</a>
+    <a href="{% url 'accounts:register' %}">ユーザー登録</a> -
+    <a href="{% url 'accounts:login' %}">ログイン</a>
   {% endif %}
 </p>
 
@@ -15,6 +15,6 @@
   <hr />
   <form action="{% url 'accounts:logout' %}" method='post'>
     {% csrf_token %}
-    <button name='submit'>Log out</button>
+    <button name='submit'>ログアウト</button>
   </form>
 {% endif %}
