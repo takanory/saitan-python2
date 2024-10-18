@@ -1,0 +1,16 @@
+{% extends "learning_logs/base.html" %}
+
+{% block page_header %}
+  <div class="p-3 mb-4 bg-light border rounded-3">
+    <div class="container-fluid py-4">
+      <h1 class="display-3">学んだことを記録しよう</h1>
+
+      <p class="lead">自分だけの学習ノートを作成して、学んだことをいつでも
+         振り返れるようにしよう。<br>
+         何か新しいことを学んだら、その内容を要約した記事を書こう。</p>
+
+      <a class="btn btn-primary btn-lg mt-1"
+        href="{% url 'accounts:register' %}">登録する &raquo;</a>
+    </div>
+  </div>
+{% endblock page_header %}
