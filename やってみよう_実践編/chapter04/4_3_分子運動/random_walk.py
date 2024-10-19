@@ -2,22 +2,22 @@ from random import choice
 
 
 class RandomWalk:
-    """A class to generate random walks."""
+    """ランダムウォークを生成するためのクラス"""
 
     def __init__(self, num_points=5000):
-        """Initialize attributes of a walk."""
+        """ランダムウォークの属性を初期化する"""
         self.num_points = num_points
 
-        # All walks start at (0, 0).
+        # すべてのランダムウォークは(0, 0)から開始する
         self.x_values = [0]
         self.y_values = [0]
 
     def fill_walk(self):
-        """Calculate all the points in the walk."""
-        # Keep taking steps until the walk reaches the desired length.
+        """ランダムウォークのすべての点を計算する"""
+        # ステップ数が指定した数になるまでランダムウォークを続ける
         while len(self.x_values) < self.num_points:
 
-            # Decide which direction to go, and how far to go.
+            # 移動する方向と距離を決定する
             x_direction = choice([1, -1])
             x_distance = choice([0, 1, 2, 3, 4])
             x_step = x_direction * x_distance
@@ -26,11 +26,11 @@ class RandomWalk:
             y_distance = choice([0, 1, 2, 3, 4])
             y_step = y_direction * y_distance
 
-            # Reject moves that go nowhere.
+            # どこにも移動しない場合は結果を破棄する
             if x_step == 0 and y_step == 0:
                 continue
 
-            # Calculate the new position.
+            # 新しい位置を計算する
             x = self.x_values[-1] + x_step
             y = self.y_values[-1] + y_step
 

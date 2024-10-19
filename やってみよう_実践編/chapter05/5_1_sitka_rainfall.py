@@ -11,7 +11,7 @@ lines = path.read_text().splitlines()
 reader = csv.reader(lines)
 header_row = next(reader)
 
-# Extract dates and rainfall amounts
+# 日付と降水量を取り出す
 dates, precips = [], []
 for row in reader:
     current_date = datetime.strptime(row[2], '%Y-%m-%d')
@@ -19,12 +19,12 @@ for row in reader:
     dates.append(current_date)
     precips.append(precip)
 
-# Plot the high temperatures.
+# 降水量のグラフを描画する
 plt.style.use('seaborn-v0_8')
 fig, ax = plt.subplots()
 ax.bar(dates, precips, color='blue')
 
-# Format plot.
+# グラフにフォーマットを指定する
 ax.set_title("Daily Precipitation, 2021", fontsize=24)
 ax.set_xlabel('', fontsize=16)
 fig.autofmt_xdate()
