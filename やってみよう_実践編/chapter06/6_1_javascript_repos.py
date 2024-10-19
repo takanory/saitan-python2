@@ -2,23 +2,23 @@ import requests
 import plotly.express as px
 
 
-# Make an API call and check the response.
+# API呼び出しを作成してレスポンスを確認する
 url = "https://api.github.com/search/repositories"
 url += "?q=language:javascript+sort:stars+stars:>10000"
 
 headers = {"Accept": "application/vnd.github.v3+json"}
 r = requests.get(url, headers=headers)
-print(f"Status code: {r.status_code}")
+print(f"ステータスコード: {r.status_code}")
 
-# Process overall results.
+# 全体の結果を処理する
 response_dict = r.json()
-print(f"Complete results: {not response_dict['incomplete_results']}")
+print(f"完全な結果: {not response_dict['incomplete_results']}")
 
-# Process repository information.
+# リポジトリ情報を処理する
 repo_dicts = response_dict['items']
 repo_links, stars, hover_texts = [], [], []
 for repo_dict in repo_dicts:
-    # Turn repo names into active links.
+    # リポジトリ名を有効なリンクにする
     repo_name = repo_dict['name']
     repo_url = repo_dict['html_url']
     repo_link = f"<a href='{repo_url}'>{repo_name}</a>"
@@ -26,15 +26,15 @@ for repo_dict in repo_dicts:
 
     stars.append(repo_dict['stargazers_count'])
 
-    # Build hover texts.
+    # ホバーテキストを構築する
     owner = repo_dict['owner']['login']
     description = repo_dict['description']
     hover_text = f"{owner}<br />{description}"
     hover_texts.append(hover_text)
 
-# Make visualization.
-title = "Most-Starred JavaScript Projects on GitHub"
-labels = {'x': 'Repository', 'y': 'Stars'}
+# 可視化を作成する
+title = "GitHubで最も多くのスターがついているJavaScriptプロジェクト"
+labels = {'x': 'リポジトリ', 'y': 'スターの数'}
 fig = px.bar(x=repo_links, y=stars, title=title, labels=labels,
         hover_name=hover_texts)
 

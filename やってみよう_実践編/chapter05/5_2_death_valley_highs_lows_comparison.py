@@ -11,23 +11,13 @@ lines = path.read_text().splitlines()
 reader = csv.reader(lines)
 header_row = next(reader)
 
-date_index = header_row.index('DATE')
-high_index = header_row.index('TMAX')
-low_index = header_row.index('TMIN')
-name_index = header_row.index('NAME')
-
-# Extract dates, and high and low temperatures.
+# 日付と最高気温、最低気温を取り出す
 dates, highs, lows = [], [], []
-place_name = ""
 for row in reader:
-    # Grab the station name, if it's not already set.
-    if not place_name:
-        place_name = row[name_index]
-
-    current_date = datetime.strptime(row[date_index], '%Y-%m-%d')
+    current_date = datetime.strptime(row[2], '%Y-%m-%d')
     try:
-        high = int(row[high_index])
-        low = int(row[low_index])
+        high = int(row[3])
+        low = int(row[4])
     except ValueError:
         print(f"Missing data for {current_date}")
     else:
@@ -35,18 +25,19 @@ for row in reader:
         highs.append(high)
         lows.append(low)
 
-# Plot the high and low temperatures.
+# 最高気温と最低気温をグラフに描画する
 plt.style.use('seaborn-v0_8')
 fig, ax = plt.subplots()
 ax.plot(dates, highs, color='red', alpha=0.5)
 ax.plot(dates, lows, color='blue', alpha=0.5)
 ax.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)
 
-# Format plot.
-title = f"Daily High and Low Temperatures, 2021\n{place_name}"
+# グラフにフォーマットを指定する
+title = "Daily High and Low Temperatures, 2021\nDeath Valley, CA"
 ax.set_title(title, fontsize=20)
 fig.autofmt_xdate()
 ax.set_ylabel("Temperature (F)", fontsize=16)
 ax.tick_params(labelsize=16)
+ax.set_ylim(10, 140)
 
 plt.show()
