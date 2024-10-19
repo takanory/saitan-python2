@@ -9,7 +9,6 @@ class Settings:
         self.bg_color = (230, 230, 230)
 
         # 宇宙船の設定
-        self.ship_speed = 1.5
         self.ship_limit = 3
 
         # 弾の設定
@@ -33,7 +32,7 @@ class Settings:
         """ゲーム中に変更される設定値を初期化する"""
         self.ship_speed = 1.5
         self.bullet_speed = 2.5
-        self.alien_speed = 5.0
+        self.alien_speed = 1.0
 
         # 艦隊の移動方向を表し 1 は右、-1 は左に移動することを表す
         self.fleet_direction = 1
