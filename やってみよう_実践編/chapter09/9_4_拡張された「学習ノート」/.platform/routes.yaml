@@ -1,0 +1,9 @@
+# 受け取ったURLをPlatform.shがどのように処理するかを記述する
+
+"https://{default}/":
+    type: upstream
+    upstream: "ll_project:http"
+
+"https://www.{default}/":
+    type: redirect
+    to: "https://{default}/"

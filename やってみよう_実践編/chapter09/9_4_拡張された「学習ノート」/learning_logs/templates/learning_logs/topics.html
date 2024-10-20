@@ -1,0 +1,38 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block page_header %}
+  <h1>トピック一覧</h1>
+{% endblock page_header %}
+
+{% block content %}
+
+  <!-- ユーザーがログインしていたら、「自分のトピック」を表示する -->
+  {% if user.is_authenticated %}
+    <ul class="list-group border-bottom pb-2 mb-4">
+      <h5>自分のトピック:</h5>
+      {% for topic in topics %}
+        <li class="list-group-item border-0">
+          <a href="{% url 'learning_logs:topic' topic.id %}">
+            {{ topic.text }}</a>
+        </li>
+      {% empty %}
+        <li class="list-group-item border-0">トピックはまだ作成されていません。</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <ul class="list-group border-bottom pb-2 mb-4">
+    <h5>Public topics:</h5>
+    {% for topic in public_topics %}
+      <li class="list-group-item border-0">
+        <a href="{% url 'learning_logs:topic' topic.id %}">
+          {{ topic.text }}</a>
+      </li>
+    {% empty %}
+      <li class="list-group-item border-0">トピックはまだ作成されていません。</li>
+    {% endfor %}
+  </ul>
+
+  <a href="{% url 'learning_logs:new_topic' %}">新規トピックを追加</a>
+
+{% endblock content %}
