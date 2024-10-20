@@ -7,17 +7,17 @@
 {% block content %}
 
   <p>
-    <a href="{% url 'blogs:new_post' blog.id %}">Create a new post</a>
+    <a href="{% url 'blogs:new_post' blog.id %}">新規投稿</a>
   </p>
 
 {% for post in posts %}
     <div class="card mb-3">
-      <!-- Card header with timestamp and edit link -->
+      <!-- カードの見出し。作成日時と編集用のリンクを含む -->
       <h4 class="card-header">{{ post.title }}</h4>
       <div class="card-body">
-        <!-- Card body with post body -->
+        <!-- カードの本体。記事の本文を含む -->
         <p class="card-text">{{ post.body|linebreaks }}</p>
-        <p class="text-end">{{ post.date_added|date:'M d, Y H:i' }}</p>
+        <p class="text-end">{{ post.date_added|date:'Y年m月d日 H:i' }}</p>
       </div>
       <div class="card-footer text-muted">
         <p class="text-end"><a href="{% url 'blogs:edit_post' post.id %}">
@@ -25,7 +25,7 @@
       </div>
     </div>
   {% empty %}
-    <p>This blog does not have any posts yet.</p>
+    <p>このブログにはまだ投稿がありません</p>
   {% endfor %}
 
 {% endblock content %}

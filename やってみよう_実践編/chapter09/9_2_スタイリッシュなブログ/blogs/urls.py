@@ -6,17 +6,17 @@ from . import views
 
 app_name = 'blogs'
 urlpatterns = [
-    # Home page
+    # ホームページ
     path('', views.index, name='index'),
-    # Page to view all blogs that have been created.
+    # 作成されたすべてのブログを表示するページ
     path('blogs/', views.blogs, name='blogs'),
-    # Page to view an individual blog, and all its posts.
+    # 個別のブログとそのすべての投稿を表示するページ
     path('blog/<int:blog_id>/', views.blog, name='blog'),
 
-    # Page for creating a new blog.
+    # 新規ブログの作成ページ
     path('new_blog/', views.new_blog, name='new_blog'),
-    # Page for writing a new post.
+    # 新規投稿の作成ページ
     path('new_post/<int:blog_id>/', views.new_post, name='new_post'),
-    # Page for editing an existing post.
+    # 既存の投稿の編集ページ
     path('edit_post/<int:post_id>/', views.edit_post, name='edit_post'),
 ]

@@ -31,14 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    # My apps.
+    # 自分のアプリケーション
     'blogs',
     'accounts',
 
-    # Third party apps.
+    # サードパーティのアプリケーション
     'django_bootstrap5',
 
-    # Default Django apps.
+    # デフォルトの django アプリケーション
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -111,9 +111,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# サイトを日本語化
+LANGUAGE_CODE = 'ja'
 
-TIME_ZONE = 'UTC'
+# タイムゾーンを日本に
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
@@ -130,7 +132,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# My settings.
+# 自分の設定
 LOGIN_REDIRECT_URL = 'blogs:index'
 LOGOUT_REDIRECT_URL = 'blogs:index'
 LOGIN_URL = 'accounts:login'

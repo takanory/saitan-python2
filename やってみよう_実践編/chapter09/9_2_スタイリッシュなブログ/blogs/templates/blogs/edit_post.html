@@ -2,7 +2,7 @@
 {% load django_bootstrap5 %}
 
 {% block page_header %}
-  <h2>Edit post</h2>
+  <h2>投稿を編集</h2>
 {% endblock page_header %}
 
 {% block content %}
@@ -12,7 +12,7 @@
   <form action="{% url 'blogs:edit_post' post.id %}" method='post'>
     {% csrf_token %}
     {% bootstrap_form form %}
-    {% bootstrap_button button_type="submit" content="Save changes" %}
+    {% bootstrap_button button_type="submit" content="変更を保存" %}
   </form>
 
 {% endblock content %}
