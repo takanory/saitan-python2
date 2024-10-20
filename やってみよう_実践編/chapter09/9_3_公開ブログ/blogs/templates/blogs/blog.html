@@ -1,0 +1,31 @@
+{% extends 'blogs/base.html' %}
+
+{% block page_header %}
+  <h1>{{ blog.name }}</h1>
+{% endblock page_header %}
+
+{% block content %}
+
+  <p>
+    <a href="{% url 'blogs:new_post' blog.id %}">新規投稿</a>
+  </p>
+
+{% for post in posts %}
+    <div class="card mb-3">
+      <!-- カードの見出し。作成日時と編集用のリンクを含む -->
+      <h4 class="card-header">{{ post.title }}</h4>
+      <div class="card-body">
+        <!-- カードの本体。記事の本文を含む -->
+        <p class="card-text">{{ post.body|linebreaks }}</p>
+        <p class="text-end">{{ post.date_added|date:'Y年m月d日 H:i' }}</p>
+      </div>
+      <div class="card-footer text-muted">
+        <p class="text-end"><a href="{% url 'blogs:edit_post' post.id %}">
+          edit post</a></p>
+      </div>
+    </div>
+  {% empty %}
+    <p>このブログにはまだ投稿がありません</p>
+  {% endfor %}
+
+{% endblock content %}
