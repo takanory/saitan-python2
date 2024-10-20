@@ -7,22 +7,22 @@
 {% block content %}
 
   <p>
-    <a href="{% url 'learning_logs:new_entry' topic.id %}">Add new entry</a>
+    <a href="{% url 'learning_logs:new_entry' topic.id %}">新しい記事を追加</a>
   </p>
 
   {% for entry in entries %}
     <div class="card mb-3">
-      <!-- Card header with timestamp and edit link -->
+      <!-- カードの見出し。作成日時と編集用のリンクを含む -->
       <h4 class="card-header">
         {{ entry.date_added|date:'M d, Y H:i' }}
         <small><a href="{% url 'learning_logs:edit_entry' entry.id %}">
-          edit entry</a></small>
+          記事を編集</a></small>
       </h4>
-      <!-- Card body with entry text -->
+      <!-- カードの本体。記事の本文を含む -->
       <div class="card-body">{{ entry.text|linebreaks }}</div>
     </div>
   {% empty %}
-    <p>There are no entries for this topic yet.</p>
+    <p>このトピックにはまだ記事がありません。</p>
   {% endfor %}
 
 {% endblock content %}

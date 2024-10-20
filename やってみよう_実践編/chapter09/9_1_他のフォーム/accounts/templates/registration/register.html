@@ -2,16 +2,15 @@
 {% load django_bootstrap5 %}
 
 {% block page_header %}
-  <h2>Add a new topic.</h2>
+  <h2>新規アカウントの登録</h2>
 {% endblock page_header %}
 
 {% block content %}
 
-  <p>Topic:</p>
-  <form action="{% url 'learning_logs:new_topic' %}" method='post'>
+  <form action="{% url 'accounts:register' %}" method='post'>
     {% csrf_token %}
     {% bootstrap_form form %}
-    {% bootstrap_button button_type="submit" content="Add topic" %}
+    {% bootstrap_button button_type="submit" content="登録する" %}
   </form>
 
 {% endblock content %}

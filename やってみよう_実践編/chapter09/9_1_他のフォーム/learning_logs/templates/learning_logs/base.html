@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Learning Log</title>
+  <title>学習ノート</title>
 
   {% load django_bootstrap5 %}
   {% bootstrap_css %}
@@ -14,11 +14,11 @@
   <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url 'learning_logs:index' %}">
-          Learning Log</a>
+          学習ノート</a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
-        aria-expanded="false" aria-label="Toggle navigation">
+        aria-expanded="false" aria-label="ナビゲーションの切り替え">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -26,39 +26,39 @@
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
             <a class="nav-link" href="{% url 'learning_logs:topics' %}">
-              Topics</a></li>
-        </ul> <!-- End of links on left side of navbar -->
+              トピック一覧</a></li>
+        </ul> <!-- navbar左側のリンクリストの終了 -->
 
-        <!-- Account-related links -->
+        <!-- アカウント関連のリンク -->
         <ul class="navbar-nav ms-auto mb-2 mb-md-0">
 
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <span class="navbar-text me-2">Hello, {{ user.username }}.
+              <span class="navbar-text me-2">こんにちは {{ user.username }}さん
                 </span></li>
           {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'accounts:register' %}">
-                  Register</a></li>
+                  ユーザー登録</a></li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'accounts:login' %}">
-                  Log in</a></li>
+                  ログイン</a></li>
           {% endif %}
 
-        </ul> <!-- End of account-related links -->
+        </ul> <!-- アカウント関連のリンクの終了 -->
 
         {% if user.is_authenticated %}
           <form action="{% url 'accounts:logout' %}" method='post'>
             {% csrf_token %}
             <button name='submit' class='btn btn-outline-secondary btn-sm'>
-              Log out</button>
+                ログアウト</button>
           </form>
         {% endif %}
 
-      </div> <!-- Closes collapsible parts of navbar -->
+      </div> <!-- navbarの折りたたみ可能なパーツの終了 -->
 
-    </div> <!-- Closes navbar's container -->
-  </nav> <!-- End of navbar -->
+    </div> <!-- navbarコンテナの終了 -->
+  </nav> <!-- navbar全体の終了 -->
 
   <main class="container">
     <div class="pb-2 mb-2 border-bottom">
