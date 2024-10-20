@@ -4,11 +4,11 @@
 
   <p><a href="{% url 'blogs:blog' blog.id %}">{{ blog.title }}</a></p>
 
-  <p>Create a new post:</p>
+  <p>新しい投稿を作成:</p>
   <form action="{% url 'blogs:new_post' blog.id %}" method='post'>
     {% csrf_token %}
     {{ form.as_div }}
-    <button name='submit'>Create post</button>
+    <button name='submit'>投稿を作成</button>
   </form>
 
 {% endblock content %}

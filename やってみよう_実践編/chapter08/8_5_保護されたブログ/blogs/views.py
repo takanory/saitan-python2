@@ -7,17 +7,17 @@ from .forms import BlogForm, BlogPostForm
 
 
 def index(request):
-    """The home page for Blog."""
+    """ブログのホームページ"""
     return render(request, 'blogs/index.html')
 
 def blogs(request):
-    """Page to view all blogs that have been newd."""
+    """作成されたすべてのブログを表示するページ"""
     blogs = Blog.objects.all()
     context = {'blogs': blogs}
     return render(request, 'blogs/blogs.html', context)
 
 def blog(request, blog_id):
-    """Page to view an individual blog, and all its posts."""
+    """個別のブログとそのすべての投稿を表示するページ"""
     blog = Blog.objects.get(id=blog_id)
     posts = blog.blogpost_set.all()
 
@@ -26,32 +26,32 @@ def blog(request, blog_id):
 
 @login_required
 def new_blog(request):
-    """Page to new a new blog."""
+    """新規ブログの作成ページ"""
     if request.method != 'POST':
-        # No data submitted; new a blank form.
+        # データは送信されていないので空のフォームを生成する
         form = BlogForm()
     else:
-        # POST data submitted; process data.
+        # POSTでデータが送信されたのでこれを処理する
         form = BlogForm(data=request.POST)
         if form.is_valid():
             form.save()
             return redirect('blogs:blogs')
 
-    # Display a blank or invalid form.
+    # 空または無効のフォームを表示する
     context = {'form': form}
     return render(request, 'blogs/new_blog.html', context)
 
 @login_required
 def new_post(request, blog_id):
-    """Page to create a new post."""
+    """新規投稿の作成ページ"""
     blog = Blog.objects.get(id=blog_id)
     check_blog_owner(blog, request.user)
 
     if request.method != 'POST':
-        # No data submitted; create a blank form.
+        # データは送信されていないので空のフォームを生成する
         form = BlogPostForm()
     else:
-        # POST data submitted; process data.
+        # POSTでデータが送信されたのでこれを処理する
         form = BlogPostForm(data=request.POST)
         if form.is_valid():
             new_post = form.save(commit=False)
@@ -59,22 +59,22 @@ def new_post(request, blog_id):
             new_post.save()
             return redirect('blogs:blog', blog_id=blog_id)
 
-    # Display a blank or invalid form.
+    # 空または無効のフォームを表示する
     context = {'blog': blog, 'form': form}
     return render(request, 'blogs/new_post.html', context)
 
 @login_required
 def edit_post(request, post_id):
-    """Page to edit an existing post."""
+    """既存の投稿の編集ページ"""
     post = BlogPost.objects.get(id=post_id)
     blog = post.blog
     check_blog_owner(blog, request.user)
 
     if request.method != 'POST':
-        # Initial request; pre-fill form with the current entry.
+        # 初回リクエスト時は現在の投稿の内容がフォームに埋め込まれている
         form = BlogPostForm(instance=post)
     else:
-        # POST data submitted; process data.
+        # POSTでデータが送信されたのでこれを処理する
         form = BlogPostForm(instance=post, data=request.POST)
         if form.is_valid():
             form.save()

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-  <p>All Blogs</p>
+<p>ブログ一覧</p>
   <ul>
     {% for blog in blogs %}
       <li>
@@ -10,10 +10,10 @@
           {{ blog.name }}</a>
       </li>
     {% empty %}
-      <li>No blogs have been created yet.</li>
+      <li>まだブログが作成されていません。</li>
     {% endfor %}
   </ul>
 
-  <a href="{% url 'blogs:new_blog' %}">Start a new blog</a>
+  <a href="{% url 'blogs:new_blog' %}">新しいブログをはじめる</a>
 
 {% endblock content %}
