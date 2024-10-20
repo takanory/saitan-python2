@@ -1,14 +1,14 @@
-"""Defines URL patterns for accounts."""
+"""accounts用URLパターンの定義"""
 
-from django.urls import path, include
+from django.urls import include, path
 
 from . import views
 
 
 app_name = 'accounts'
 urlpatterns = [
-    # Include default auth urls.
+    # デフォルトの認証URLを取り込む
     path('', include('django.contrib.auth.urls')),
-    # Registration page.
+    # ユーザー登録ページ
     path('register/', views.register, name='register'),
 ]

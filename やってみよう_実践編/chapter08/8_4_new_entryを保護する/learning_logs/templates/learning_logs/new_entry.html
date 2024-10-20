@@ -4,12 +4,11 @@
 
   <p><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a></p>
 
-  <p>Edit entry:</p>
-
-  <form action="{% url 'learning_logs:edit_entry' entry.id %}" method='post'>
+  <p>新しい記事を追加:</p>
+  <form action="{% url 'learning_logs:new_entry' topic.id %}" method='post'>
     {% csrf_token %}
     {{ form.as_div }}
-    <button name="submit">Save changes</button>
+    <button name='submit'>記事を追加</button>
   </form>
 
 {% endblock content %}
