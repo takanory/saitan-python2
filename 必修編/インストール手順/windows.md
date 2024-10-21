@@ -20,7 +20,7 @@ https://python.org を開き、「Downloads」リンクの上にマウスカー�
 ［Add Python to PATH］オプションを選択してインストールすることにより、システムに正しくパスが設定されます。
 *図1-1* は、このオプションを選択した状態の画面です。
 
-![Windowsのインストール画面](images/win-install.png)
+![Windowsのインストール画面](win-install.png)
 
 ## Pythonをターミナル上で動かす
 
@@ -33,7 +33,7 @@ C:\> python
 Python 3.x.x (main, Jun . . . , 13:29:14) [MSC v.1932 64 bit (AMD64)] on win32
 "help", "copyright", "credits" or "license" for more information.
 >>>
-
+```
 
 ## VS Codeをインストールする
 
