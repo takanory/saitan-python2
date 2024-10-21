@@ -1,4 +1,4 @@
-# Windows上インストール手順
+# WindowsでのPythonインストール手順
 
 Windowsには通常はPythonが付属していないので、Pythonのインストールが必要です。
 そのあとでVS Codeをインストールします。
