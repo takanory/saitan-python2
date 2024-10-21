@@ -37,5 +37,5 @@ Python 3.x.x (main, Jun . . . , 13:29:14) [MSC v.1932 64 bit (AMD64)] on win32
 
 ## VS Codeをインストールする
 
-VS Codeのインストーラーは、Webサイト（https://code.visualstudio.com）からダウンロードできます。
+VS Codeのインストーラーは、Webサイト（https://code.visualstudio.com ）からダウンロードできます。
 ［Download for Windows］ボタンをクリックし、インストーラーを実行します。
